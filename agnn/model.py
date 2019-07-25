@@ -2,7 +2,7 @@ import torch
 import torch.nn as nn
 from torch.nn.parameter import Parameter
 from torch.autograd import Variable
-import torch.nn.functional as F
+import torch.nn.functional as F   
 
 
 class GraphAttentionLayer(nn.Module):

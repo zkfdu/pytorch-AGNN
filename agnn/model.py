@@ -24,9 +24,11 @@ class GraphAttentionLayer(nn.Module):
 
         # add a minor constant (1e-7) to denominator to prevent division by
         # zero error
-        cos = self.beta * \
-            torch.div(torch.mm(x, x.t()), torch.mm(norm2, norm2.t()) + 1e-7)
 
+        # cos = self.beta * \
+        #     torch.div(torch.mm(x, x.t()), torch.mm(norm2, norm2.t()) + 1e-7)
+        cos = self.beta.cuda() * \
+            torch.div(torch.mm(x.cuda(), x.t().cuda()), torch.mm(norm2.cuda(), norm2.t().cuda()) + 1e-7)#修改后
         # neighborhood masking (inspired by this repo:
         # https://github.com/danielegrattarola/keras-gat)
         mask = (1. - adj) * -1e9

@@ -36,10 +36,10 @@ def train():
         loss_val = F.nll_loss(output[idx_val], labels[idx_val])
         acc_val = accuracy(output[idx_val], labels[idx_val])
         print('Epoch: {:04d}'.format(epoch+1),
-              'loss_train: {:.4f}'.format(loss_train.data[0]),
-              'acc_train: {:.4f}'.format(acc_train.data[0]),
-              'loss_val: {:.4f}'.format(loss_val.data[0]),
-              'acc_val: {:.4f}'.format(acc_val.data[0]),
+              'loss_train: {:.4f}'.format(loss_train.item()),
+              'acc_train: {:.4f}'.format(acc_train.item()),
+              'loss_val: {:.4f}'.format(loss_val.item()),
+              'acc_val: {:.4f}'.format(acc_val.item()),
               'time: {:.4f}s'.format(time.time() - t))
 
     print("Optimization Finished!")
@@ -52,8 +52,8 @@ def test():
     loss_test = F.nll_loss(output[idx_test], labels[idx_test])
     acc_test = accuracy(output[idx_test], labels[idx_test])
     print("Test set results:",
-          "loss= {:.4f}".format(loss_test.data[0]),
-          "accuracy= {:.4f}".format(acc_test.data[0]))
+          "loss= {:.4f}".format(loss_test.item()),
+          "accuracy= {:.4f}".format(acc_test.item()))
 
 
 if __name__ == "__main__":
